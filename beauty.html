@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Veloura Beauty Studio | Luxury Lash & Beauty Concept</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fff7f8;
+      color: #26151a;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at top left, rgba(255, 192, 203, 0.45), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(214, 160, 120, 0.28), transparent 30%);
+      z-index: -1;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 247, 248, 0.75);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(38, 21, 26, 0.08);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: 0.08rem;
+      color: #8f4d5f;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 34px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: rgba(38, 21, 26, 0.72);
+      font-weight: 500;
+      transition: 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #8f4d5f;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.3s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #9b5265, #d89aad);
+      color: white;
+      box-shadow: 0 18px 45px rgba(155, 82, 101, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(143, 77, 95, 0.18);
+      color: #8f4d5f;
+      background: rgba(255,255,255,0.65);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 110px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    small {
+      letter-spacing: 0.28rem;
+      text-transform: uppercase;
+      color: rgba(143, 77, 95, 0.72);
+      font-weight: 700;
+      font-size: 0.78rem;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(3rem, 7vw, 6.3rem);
+      line-height: 0.96;
+      margin-top: 24px;
+      color: #2b151b;
+    }
+
+    .hero-text p {
+      margin-top: 28px;
+      color: rgba(38, 21, 26, 0.7);
+      line-height: 1.9;
+      font-size: 1.08rem;
+      max-width: 580px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      margin-top: 38px;
+      flex-wrap: wrap;
+    }
+
+    .hero-visual {
+      position: relative;
+      height: 620px;
+      perspective: 1200px;
+    }
+
+    .main-card {
+      position: absolute;
+      inset: 20px 20px 40px 20px;
+      border-radius: 42px;
+      overflow: hidden;
+      transform: rotateY(-9deg) rotateX(4deg);
+      box-shadow: 0 35px 80px rgba(143, 77, 95, 0.22);
+      border: 10px solid rgba(255,255,255,0.65);
+      background: white;
+    }
+
+    .main-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .float-card {
+      position: absolute;
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(143, 77, 95, 0.12);
+      border-radius: 26px;
+      padding: 20px;
+      box-shadow: 0 20px 50px rgba(143, 77, 95, 0.18);
+    }
+
+    .float-one {
+      right: -6px;
+      top: 80px;
+    }
+
+    .float-two {
+      left: -6px;
+      bottom: 70px;
+    }
+
+    .float-card strong {
+      display: block;
+      font-size: 1.35rem;
+      color: #8f4d5f;
+    }
+
+    .float-card span {
+      display: block;
+      margin-top: 6px;
+      color: rgba(38, 21, 26, 0.65);
+      font-size: 0.9rem;
+    }
+
+    section {
+      padding: 105px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 65px;
+    }
+
+    .section-title h2 {
+      margin-top: 18px;
+      font-size: clamp(2.4rem, 5vw, 4.6rem);
+      line-height: 1;
+    }
+
+    .section-title p {
+      margin-top: 20px;
+      color: rgba(38, 21, 26, 0.68);
+      line-height: 1.8;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .service-card {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(143, 77, 95, 0.1);
+      border-radius: 34px;
+      padding: 34px;
+      transition: 0.35s ease;
+      box-shadow: 0 22px 55px rgba(143, 77, 95, 0.08);
+    }
+
+    .service-card:hover {
+      transform: translateY(-9px);
+      box-shadow: 0 28px 70px rgba(143, 77, 95, 0.15);
+    }
+
+    .icon {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border-radius: 20px;
+      background: #f7d9e1;
+      font-size: 1.6rem;
+      margin-bottom: 22px;
+    }
+
+    .service-card h3 {
+      font-size: 1.85rem;
+    }
+
+    .service-card p {
+      margin-top: 15px;
+      color: rgba(38, 21, 26, 0.66);
+      line-height: 1.8;
+    }
+
+    .about-box {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 56px;
+      align-items: center;
+      background: rgba(255,255,255,0.65);
+      border: 1px solid rgba(143, 77, 95, 0.1);
+      border-radius: 42px;
+      padding: 52px;
+      box-shadow: 0 28px 70px rgba(143, 77, 95, 0.1);
+    }
+
+    .about-box img {
+      width: 100%;
+      height: 560px;
+      object-fit: cover;
+      border-radius: 34px;
+    }
+
+    .about-text h2 {
+      font-size: clamp(2.4rem, 5vw, 4.4rem);
+      line-height: 1;
+    }
+
+    .about-text p {
+      margin-top: 24px;
+      color: rgba(38, 21, 26, 0.68);
+      line-height: 1.9;
+    }
+
+    .stats {
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .stat {
+      background: #fff7f8;
+      border-radius: 22px;
+      padding: 20px;
+      border: 1px solid rgba(143, 77, 95, 0.08);
+    }
+
+    .stat strong {
+      color: #8f4d5f;
+      font-size: 1.5rem;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 6px;
+      font-size: 0.85rem;
+      color: rgba(38,21,26,0.62);
+    }
+
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .price-card {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(143, 77, 95, 0.1);
+      border-radius: 34px;
+      padding: 34px;
+      box-shadow: 0 22px 55px rgba(143, 77, 95, 0.08);
+    }
+
+    .price-card.featured {
+      background: linear-gradient(135deg, #fff, #ffe9ef);
+      transform: scale(1.04);
+      border-color: rgba(143, 77, 95, 0.25);
+    }
+
+    .tag {
+      display: inline-block;
+      background: #8f4d5f;
+      color: white;
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .price-card h3 {
+      font-size: 1.9rem;
+    }
+
+    .price-card p {
+      margin-top: 12px;
+      color: rgba(38, 21, 26, 0.66);
+      line-height: 1.7;
+    }
+
+    .price {
+      margin-top: 18px;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #8f4d5f;
+    }
+
+    .price-card ul {
+      margin-top: 24px;
+      list-style: none;
+    }
+
+    .price-card li {
+      margin-bottom: 13px;
+      color: rgba(38,21,26,0.68);
+    }
+
+    .cta {
+      text-align: center;
+      padding: 90px 35px;
+      border-radius: 42px;
+      background: linear-gradient(135deg, rgba(143,77,95,0.95), rgba(216,154,173,0.92));
+      color: white;
+      box-shadow: 0 30px 80px rgba(143,77,95,0.25);
+    }
+
+    .cta h2 {
+      font-size: clamp(2.6rem, 5vw, 4.9rem);
+      line-height: 1;
+    }
+
+    .cta p {
+      margin: 24px auto 0;
+      max-width: 720px;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.82);
+    }
+
+    footer {
+      padding: 42px 0;
+      text-align: center;
+      color: rgba(38,21,26,0.6);
+      border-top: 1px solid rgba(143,77,95,0.08);
+    }
+
+    @media(max-width: 900px) {
+      nav ul {
+        display: none;
+      }
+
+      .hero-grid,
+      .services,
+      .about-box,
+      .pricing {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        height: 500px;
+      }
+
+      .about-box {
+        padding: 28px;
+      }
+
+      .about-box img {
+        height: 420px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .price-card.featured {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Veloura Beauty</div>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#pricing">Packages</a></li>
+          <li><a href="#contact">Book</a></li>
+        </ul>
+        <a href="#contact" class="btn btn-secondary">Book Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <small>Luxury Lash & Beauty Studio</small>
+        <h1>Beauty That Feels Soft, Elegant, And Effortless.</h1>
+        <p>
+          Veloura Beauty is a luxury beauty studio concept website designed by JK Digital Studio to showcase elegant branding, smooth booking flow, and premium service presentation.
+        </p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary">Book An Appointment</a>
+          <a href="#services" class="btn btn-secondary">View Services</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="main-card">
+          <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1200&auto=format&fit=crop" alt="Beauty studio makeup look">
+        </div>
+        <div class="float-card float-one">
+          <strong>Luxury Finish</strong>
+          <span>Soft glam experience</span>
+        </div>
+        <div class="float-card float-two">
+          <strong>Online Booking</strong>
+          <span>Simple appointment flow</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-title">
+        <small>Our Services</small>
+        <h2>Designed For Confidence</h2>
+        <p>A clean and premium service layout that helps beauty clients quickly understand options and book with confidence.</p>
+      </div>
+
+      <div class="services">
+        <div class="service-card">
+          <div class="icon">✨</div>
+          <h3>Lash Extensions</h3>
+          <p>Classic, hybrid, and volume lash sets designed for natural elegance or dramatic glam.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="icon">💗</div>
+          <h3>Brow Styling</h3>
+          <p>Defined brows with shaping, tinting, and finishing for a polished beauty look.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="icon">🌸</div>
+          <h3>Soft Glam</h3>
+          <p>Makeup looks for events, photoshoots, and special occasions with a luxury finish.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="about-box">
+        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1200&auto=format&fit=crop" alt="Luxury beauty salon">
+        <div class="about-text">
+          <small>About The Brand</small>
+          <h2>A Soft Luxury Experience From First Click.</h2>
+          <p>
+            This concept was created to show how beauty brands can use elegant visuals, clear packages, and strong calls-to-action to turn website visitors into booked clients.
+          </p>
+          <p>
+            The design focuses on trust, femininity, clean spacing, and a premium feel — perfect for salons, lash artists, makeup artists, and spa businesses.
+          </p>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>3+</strong>
+              <span>Service Categories</span>
+            </div>
+            <div class="stat">
+              <strong>100%</strong>
+              <span>Mobile Friendly</span>
+            </div>
+            <div class="stat">
+              <strong>Concept</strong>
+              <span>By JK Digital Studio</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="container">
+      <div class="section-title">
+        <small>Beauty Packages</small>
+        <h2>Simple Booking Options</h2>
+        <p>Package cards make services easy to compare and help clients choose quickly.</p>
+      </div>
+
+      <div class="pricing">
+        <div class="price-card">
+          <h3>Classic Set</h3>
+          <p>Perfect for a clean, natural everyday look.</p>
+          <div class="price">$95+</div>
+          <ul>
+            <li>• Classic lash application</li>
+            <li>• Natural finish</li>
+            <li>• Aftercare guidance</li>
+            <li>• 90-minute appointment</li>
+          </ul>
+        </div>
+
+        <div class="price-card featured">
+          <span class="tag">Most Popular</span>
+          <h3>Hybrid Glam</h3>
+          <p>Balanced volume with a soft luxury finish.</p>
+          <div class="price">$125+</div>
+          <ul>
+            <li>• Hybrid lash set</li>
+            <li>• Custom mapping</li>
+            <li>• Fuller but soft look</li>
+            <li>• 2-hour appointment</li>
+          </ul>
+        </div>
+
+        <div class="price-card">
+          <h3>Volume Luxe</h3>
+          <p>For clients who want bold, full, and dramatic lashes.</p>
+          <div class="price">$155+</div>
+          <ul>
+            <li>• Volume lash set</li>
+            <li>• Luxury finish</li>
+            <li>• Custom styling</li>
+            <li>• Premium aftercare tips</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="cta">
+        <small>Ready To Book?</small>
+        <h2>Your Beauty Experience Starts Here.</h2>
+        <p>
+          This beauty studio concept was designed by JK Digital Studio to demonstrate premium web design for salons, lash artists, makeup artists, and spa businesses.
+        </p>
+        <div class="hero-buttons" style="justify-content:center; margin-top:38px;">
+          <a href="mailto:jkdigitalstudio@outlook.com" class="btn btn-secondary">Contact JK Digital Studio</a>
+          <a href="https://www.instagram.com/jag_digitalStudio" class="btn btn-secondary">DM On Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>Concept Beauty Studio Website • Designed by JK Digital Studio • Instagram/Facebook: @jag_digitalStudio</p>
+    </div>
+  </footer>
+
+</body>
+</html>
